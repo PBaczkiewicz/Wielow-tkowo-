@@ -8,13 +8,14 @@ namespace Wielowątkowość
     {
         string printValue;
         int numbers;
-        int values=1;
+        int values = 1;
         int startValues = 1;
         public Form1()
         {
             InitializeComponent();
         }
 
+        //Przycisk rozpoczynający wypisywanie permutacji
         private void button_Click(object sender, EventArgs e)
         {
 
@@ -26,30 +27,30 @@ namespace Wielowątkowość
                 startValues *= 10;
             }
             values = startValues;
-            //MessageBox.Show(values.ToString());
             timer1.Interval = 100;
             progressBar.Maximum = values;
-            
-            
+
+
             timer1.Start();
-            
-            
+
+
 
         }
 
+        //Timer wypisujący co 100ms permutacje
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+
             printValue = values.ToString();
             for (int j = 1; j < numbers + 1; j++)
             {
                 richTextBox1.AppendText(printValue[j].ToString());
             }
-            progressBar.Value = (values - startValues)+1;
-            labelProgress.Text = "Permutacja : " + ((values - startValues)+1).ToString() +"/"+startValues.ToString();
+            progressBar.Value = (values - startValues) + 1;
+            labelProgress.Text = "Permutacja : " + ((values - startValues) + 1).ToString() + "/" + startValues.ToString();
             richTextBox1.AppendText("\n");
             values++;
-            if (values > startValues * 2-1)
+            if (values > startValues * 2 - 1)
             {
                 timer1.Stop();
             }
